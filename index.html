@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var arr =[]
+let n = 8
+maxProfit(n)
+function maxProfit(n){
+  if(n > 5){
+    var Tno = Math.floor(n/5)
+    let a = n%5
+    var T = Tno >1 ? (Tno+a) *1500 + Tno*(1500*a) :1500 * a + (Tno-1) *1500
+    arr.push({T:T})
+    //console.log(T)
+  }
+  if(n > 4){
+    var Pno = Math.floor(n/4)
+    let a = n%4
+    var P = Pno >1 ? (Pno+a) *1000 + Pno*(1000*a) :1000 * a + (Pno-1) *1000
+    //console.log("P",P)
+    arr.push({P:P})
+  }
+  if(n > 10){
+    var Cno = Math.floor(n/10)
+    let a = n%10
+    var C = Cno >1 ? (Cno+a) *3000 + Cno*(3000*a) :1500 * a + (Cno-1) *3000
+    //console.log(C)
+    arr.push({C:C})
+  }
+  //console.log(Math.max(...arr))
+  let pad = -Infinity
+let valueKeeper = 0
+for(let i=0;i<arr.length;i++){
+  //console.log(Object.values(arr[i])[0])
+  if(pad<Object.values(arr[i])[0]){
+    pad = Object.keys(arr[i])[0]
+    valueKeeper =Object.values(arr[i])[0]
+  }
+}
+if(pad === "T"){
+    console.log(`T:${Tno}P:0C:0`)
+}else if(pad === "C"){
+    console.log(`T:0P:0C:${Cno}`)
+}else{
+    console.log(`T:0P:${Pno}C:0`)
+}
+//console.log(pad,valueKeeper)
+}
+
+
+</script>
